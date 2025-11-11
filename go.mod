@@ -1,4 +1,4 @@
-module github.com/LucasCodo/projeto-1-SOA/proto
+module github.com/LucasCodo/projeto-1-SOA
 
 go 1.25.3
 
