@@ -1,4 +1,4 @@
-module exemplo.com/meuprojeto
+module github.com/LucasCodo/projeto-1-SOA/proto
 
 go 1.25.3
 
