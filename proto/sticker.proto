@@ -1,0 +1,18 @@
+syntax = 'proto3';
+
+package sticker;
+
+
+option go_package = "github.com/LucasCodo/projeto-1-SOA/proto;stickerpb";
+
+service StickerService{
+  rpc GetSticker(StickerRequest) returns (StickerResponse);
+}
+
+message StickerRequest{
+  string id = 1;
+}
+
+message StickerResponse{
+  string url = 1;
+}
