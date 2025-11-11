@@ -1,22 +1,18 @@
-import grpc
-from concurrent import futures
-import sticker_pb2, sticker_pb2_grpc
+from deck import card_generator
+from fastapi import FastAPI
+from client import get_sticker
 
 
-suits = 'CDSH'
-cards = 'A234567890JQK'
-class StickerService(sticker_pb2_grpc.StickerServiceServicer):
-    def GetSticker(self, request, context):
-        return sticker_pb2.StickerResponse(url='https://deckofcardsapi.com/static/img/AS.png')
+app = FastAPI()
 
-        #{'url': 'https://deckofcardsapi.com/static/img/AS.png'}
+get_card = card_generator()
 
-def serve():
-    server = grpc.server(futures.ThreadPoolExecutor(max_workers=5))
-    sticker_pb2_grpc.add_StickerServiceServicer_to_server(StickerService(), server)
-    server.add_insecure_port('[::]:50051')
-    server.start()
-    server.wait_for_termination()
+@app.get("/cards")
+def get_cards():
+    """Endpoint que retorna uma lista de URLs de cartas."""
 
-if __name__ == '__main__':
-    serve()
+    return {"cards": [
+        f'https://deckofcardsapi.com/static/img/{next(get_card)}.png',
+        get_sticker(),
+        get_sticker(50052)
+    ]}
