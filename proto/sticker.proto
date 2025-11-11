@@ -3,7 +3,7 @@ syntax = 'proto3';
 package sticker;
 
 
-option go_package = "github.com/LucasCodo/projeto-1-SOA/proto;stickerpb";
+option go_package = "github.com/LucasCodo/projeto-1-SOA/proto;sticker";
 
 service StickerService{
   rpc GetSticker(StickerRequest) returns (StickerResponse);
