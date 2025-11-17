@@ -1,0 +1,27 @@
+services:
+  api-rest:
+    build:
+      context: .
+      dockerfile: app_c_rest_grpc/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - GRPC_SERVER_HOST_A=app-python-grpc
+      - GRPC_SERVER_HOST_B=app-go-grpc
+    depends_on:
+      - app-go-grpc
+      - app-python-grpc
+
+  app-python-grpc:
+    build:
+      context: .
+      dockerfile: app_a_grpc/Dockerfile
+    ports:
+      - "50051:50051"
+
+  app-go-grpc:
+    build:
+      context: .
+      dockerfile: app_b_grpc/Dockerfile
+    ports:
+      - "50052:50052"

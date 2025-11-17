@@ -9,3 +9,5 @@ go run ./main.go
 
 python -m grpc_tools.protoc -I=proto --python_out=. --grpc_python_out=. proto/sticker.proto
 protoc -I proto --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative proto/sticker.proto
+
+docker compose up
