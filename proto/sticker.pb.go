@@ -67,7 +67,7 @@ func (x *StickerRequest) GetId() string {
 
 type StickerResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Url           string                 `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -102,9 +102,9 @@ func (*StickerResponse) Descriptor() ([]byte, []int) {
 	return file_sticker_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *StickerResponse) GetUrl() string {
+func (x *StickerResponse) GetName() string {
 	if x != nil {
-		return x.Url
+		return x.Name
 	}
 	return ""
 }
@@ -115,9 +115,9 @@ const file_sticker_proto_rawDesc = "" +
 	"\n" +
 	"\rsticker.proto\x12\asticker\" \n" +
 	"\x0eStickerRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"#\n" +
-	"\x0fStickerResponse\x12\x10\n" +
-	"\x03url\x18\x01 \x01(\tR\x03url2Q\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"%\n" +
+	"\x0fStickerResponse\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name2Q\n" +
 	"\x0eStickerService\x12?\n" +
 	"\n" +
 	"GetSticker\x12\x17.sticker.StickerRequest\x1a\x18.sticker.StickerResponseB4Z2github.com/LucasCodo/projeto-1-SOA/proto;stickerpbb\x06proto3"

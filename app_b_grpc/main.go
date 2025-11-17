@@ -23,9 +23,8 @@ type stickerServer struct {
 func (s *stickerServer) GetSticker(ctx context.Context, req *stickerpb.StickerRequest) (*stickerpb.StickerResponse, error) {
 	// obtém a próxima carta do gerador
 	card := <-s.cardGen
-	url := "https://deckofcardsapi.com/static/img/" + card + ".png"
 
-	return &stickerpb.StickerResponse{Url: url}, nil
+	return &stickerpb.StickerResponse{Name: card}, nil
 }
 
 // cardGenerator devolve um canal de strings que gera cartas infinitamente.

@@ -12,7 +12,7 @@ def get_cards():
     """Endpoint que retorna uma lista de URLs de cartas."""
 
     return {"cards": [
-        f'https://deckofcardsapi.com/static/img/{next(get_card)}.png',
+        f'{next(get_card)}',
         get_sticker(),
         get_sticker(50052)
     ]}

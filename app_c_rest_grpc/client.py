@@ -7,7 +7,7 @@ def get_sticker(port: int = 50051):
         try:
             result = stub.GetSticker(sticker_pb2.StickerRequest())
             print(f'{result}')
-            return result.url
+            return result.name
         except grpc.RpcError as e:
             print(f'{e}')
 

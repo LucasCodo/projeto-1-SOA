@@ -14,5 +14,5 @@ message StickerRequest{
 }
 
 message StickerResponse{
-  string url = 1;
+  string name = 1;
 }

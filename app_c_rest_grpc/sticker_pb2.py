@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rsticker.proto\x12\x07sticker\"\x1c\n\x0eStickerRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\x1e\n\x0fStickerResponse\x12\x0b\n\x03url\x18\x01 \x01(\t2Q\n\x0eStickerService\x12?\n\nGetSticker\x12\x17.sticker.StickerRequest\x1a\x18.sticker.StickerResponseB4Z2github.com/LucasCodo/projeto-1-SOA/proto;stickerpbb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rsticker.proto\x12\x07sticker\"\x1c\n\x0eStickerRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\x1f\n\x0fStickerResponse\x12\x0c\n\x04name\x18\x01 \x01(\t2Q\n\x0eStickerService\x12?\n\nGetSticker\x12\x17.sticker.StickerRequest\x1a\x18.sticker.StickerResponseB4Z2github.com/LucasCodo/projeto-1-SOA/proto;stickerpbb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -35,7 +35,7 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_STICKERREQUEST']._serialized_start=26
   _globals['_STICKERREQUEST']._serialized_end=54
   _globals['_STICKERRESPONSE']._serialized_start=56
-  _globals['_STICKERRESPONSE']._serialized_end=86
-  _globals['_STICKERSERVICE']._serialized_start=88
-  _globals['_STICKERSERVICE']._serialized_end=169
+  _globals['_STICKERRESPONSE']._serialized_end=87
+  _globals['_STICKERSERVICE']._serialized_start=89
+  _globals['_STICKERSERVICE']._serialized_end=170
 # @@protoc_insertion_point(module_scope)

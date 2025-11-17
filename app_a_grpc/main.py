@@ -6,9 +6,8 @@ from deck import card_generator
 get_card = card_generator()
 class StickerService(sticker_pb2_grpc.StickerServiceServicer):
     def GetSticker(self, request, context):
-        # {'url': 'https://deckofcardsapi.com/static/img/AS.png'}
         return sticker_pb2.StickerResponse(
-            url=f'https://deckofcardsapi.com/static/img/{next(get_card)}.png')
+            name=f'{next(get_card)}')
 
 
 def serve():
