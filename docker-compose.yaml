@@ -25,3 +25,64 @@ services:
       dockerfile: app_b_grpc/Dockerfile
     ports:
       - "50052:50052"
+
+  rabbitmq:
+    image: rabbitmq:management-alpine
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"       # porta para apps
+      - "15672:15672"     # painel web de administração
+    environment:
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: password
+    healthcheck:
+      test: rabbitmq-diagnostics check_port_connectivity
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app-a-event:
+    build:
+      context: .
+      dockerfile: app_a_event/Dockerfile
+    environment:
+      RABBITMQ_URL: amqp://user:password@rabbitmq:5672/
+      RABBITMQ_QUEUE: queue_a
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+  app-b-event:
+    build:
+      context: .
+      dockerfile: app_a_event/Dockerfile
+    environment:
+      RABBITMQ_URL: amqp://user:password@rabbitmq:5672/
+      RABBITMQ_QUEUE: queue_b
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+  app-c-event:
+    build:
+      context: .
+      dockerfile: app_a_event/Dockerfile
+    environment:
+      RABBITMQ_URL: amqp://user:password@rabbitmq:5672/
+      RABBITMQ_QUEUE: queue_c
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+  app-main:
+    build:
+      context: .
+      dockerfile: appmain/Dockerfile
+    ports:
+      - "8001:8001"
+    environment:
+      API_REST_URL: 'http://api-rest:8000/cards'
+      RABBITMQ_URL: 'amqp://user:password@rabbitmq:5672/'
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
