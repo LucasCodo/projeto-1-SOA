@@ -47,7 +47,9 @@ async def get_stickers_rabbitmq(queues: list[str]):
 
 @router.get("/stickers")
 async def stickers_endpoint():
-    cards = await get_stickers_rabbitmq(ENV.QUEUES)
+    cards_rest = await get_stickers_rest()
+    cards_rabbit = await get_stickers_rabbitmq(ENV.QUEUES)
+    cards = cards_rest + cards_rabbit
     return {
         "cards": cards,
     }
